@@ -219,45 +219,52 @@ function generateBarMenuItemCard({ productName, productimageUrl, description, pr
   
   // Функція для генерації меню за типом
   function generateBarMenuItemsByType(menuType) {
-    const filteredMenu = restoran_data.filter((item) => item.keywords.includes(menuType));
-    const menuItemsHTML = filteredMenu.map(generateBarMenuItemCard).join("");
-    if (slidesContainer != null) {
-        slidesContainer.innerHTML = menuItemsHTML;
-        showFirstSlide();    
+        const filteredMenu = restoran_data.filter((item) => item.keywords.includes(menuType));
+        const menuItemsHTML = filteredMenu.map(generateBarMenuItemCard).join("");
+
+        if (slidesContainer != null) {
+            slidesContainer.innerHTML = menuItemsHTML;
+        //showFirstSlide();    
     }    
   }
   
   // Слайдер
   
-  if (document.querySelector(".slider") != null) {
+
     const slider = document.querySelector(".slider");
     let currentIndex = 0;
     
     function showSlide(index) {
-      slider.style.transform = `translateX(-${index * 100}%)`;
+        if (slider != null) {
+            slider.style.transform = `translateX(-${index * 100}%)`;    
+        }
     }
 
     function showFirstSlide() {
-      slider.style.transform = `translateX(-${0}%)`;
+        slider.style.transform = `translateX(-${0}%)`;
     }
 
     showSlide(currentIndex);
 
     function updateSlider(direction) {
-      const slides = document.querySelectorAll(".slide");
-      currentIndex += direction;
-      if (currentIndex >= slides.length) {
+        const slides = document.querySelectorAll(".slide");
+        currentIndex += direction;
+
+        if (currentIndex >= slides.length) {
         currentIndex = 0;
       } else if (currentIndex < 0) {
         currentIndex = slides.length - 1;
     }
     showSlide(currentIndex);
-  }
+    }
   
-  document.querySelector(".next_btn").addEventListener("click", () => updateSlider(1));
-  document.querySelector(".prev_btn").addEventListener("click", () => updateSlider(-1));
+    if (document.querySelector(".next_btn") !=null && document.querySelector(".prev_btn") !=  null) {
+        document.querySelector(".next_btn").addEventListener("click", () => updateSlider(1));
+        document.querySelector(".prev_btn").addEventListener("click", () => updateSlider(-1));        
+    }
+
     
-  }
+
   
   // Генерація меню за фільтром
   const slidesContainer = document.querySelector("#slides_container");
@@ -265,8 +272,9 @@ function generateBarMenuItemCard({ productName, productimageUrl, description, pr
 
   menuTypeButtons.forEach((button) => {
     button.addEventListener("click", function () {
-      const menuType = this.id;
-      generateBarMenuItemsByType(menuType);
+        const menuType = this.id;
+        generateBarMenuItemsByType(menuType);
+        howFirstSlide()
     });
   });
   
