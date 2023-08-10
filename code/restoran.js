@@ -274,7 +274,7 @@ function generateBarMenuItemCard({ productName, productimageUrl, description, pr
     button.addEventListener("click", function () {
         const menuType = this.id;
         generateBarMenuItemsByType(menuType);
-        howFirstSlide()
+        showFirstSlide()
     });
   });
   
