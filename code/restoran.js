@@ -223,9 +223,8 @@ function generateBarMenuItemCard({ productName, productimageUrl, description, pr
         const menuItemsHTML = filteredMenu.map(generateBarMenuItemCard).join("");
 
         if (slidesContainer != null) {
-            slidesContainer.innerHTML = menuItemsHTML;
-        //showFirstSlide();    
-    }    
+            slidesContainer.innerHTML = menuItemsHTML;    
+        }    
   }
   
   // Слайдер
@@ -252,7 +251,7 @@ function generateBarMenuItemCard({ productName, productimageUrl, description, pr
 
         if (currentIndex >= slides.length) {
         currentIndex = 0;
-      } else if (currentIndex < 0) {
+        } else if (currentIndex < 0) {
         currentIndex = slides.length - 1;
     }
     showSlide(currentIndex);
