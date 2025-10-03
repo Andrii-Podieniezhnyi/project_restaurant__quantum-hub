@@ -103,6 +103,32 @@ body {
 }
 
 
+
+
+
+
+
+@media(min-width: 425px) and (max-width: 767px) {
+
+    .card_container{
+        display: flex;
+        justify-content: center;
+        padding: 20px 20px;
+    }
+
+    .restoran__card{
+        flex-direction: column;
+        height: auto;
+        padding: 10px 10px;
+    }
+
+    .prod_name__container{
+        text-align: center;
+    }
+}
+
+
+
 @media(min-width: 768px) {
     .card_container{
         width: 35rem;
